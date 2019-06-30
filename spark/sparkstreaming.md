@@ -1,0 +1,5 @@
+# SparkStreaming
+
+1. 同时处理多个输入流时，尽管可以创建多个InputDStream，但是这些任务都是占用core的，而且是long running process；因此要记得留足资源给处理节点。因此，在本地运行时，尤其要注意至少指定2个以上的线程，否则只能接收数据，无法处理数据（File Stream除外，因为不需要启用Receiver，因此不必单独分配计算资源）
+2. 为测试方便，可以通过若干个RDD通过queueStream方式构建一个测试数据流去测试
+3. JOIN，批次是在streamingContext创建的时候定义的，所以所有的stream的批次时间都是确定的，所以可以基于时间based进行JOIN（不同sliding周期的window是否可以join，join的时间周期是什么呢？）
