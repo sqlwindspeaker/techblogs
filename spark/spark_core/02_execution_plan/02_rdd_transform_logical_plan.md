@@ -1,4 +1,4 @@
-# RDD 实现
+# RDD Trasform 实现
 
 配合着一起看：<https://so.csdn.net/so/search/s.do?p=1&q=RDD&t=blog&domain=&o=&u=legotime&s=&l=&f=false&rbg=0>
 
@@ -53,6 +53,12 @@ cartesianRDD 的计算，是一个N:1dependency，这种dependency 有两种情�
 
 
 但是如果是shuffle之后再进行N:1 depedency，则中间会进行一次broadcast exchange；也就是说，exchange分两种，一种是shuffle exchange，这种是shuffle dependency，特点是child partition只需要parent partition的部分数据，所以需要shuffle一把；而N：1dependcy是child partiition需要parent 的多个partition，但是要全部数据，所以不需要shuffle，直接broadcast即可；
+
+
+
+1:1 dependency， Range Dependency
+
+
 
 
 
